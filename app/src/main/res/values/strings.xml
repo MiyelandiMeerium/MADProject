@@ -4,4 +4,27 @@
     <string name="title_activity_splashscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="username">Username</string>
+    <string name="Income">Rs.145,530.00</string>
+    <string name="Expenses">Rs.84,950.00</string>
+    <string name="Upcoming">Rs.44,350.00</string>
+    <string name="UpExpenses">Rs.24,750.00</string>
+    <string name="Recoad1">Ui Design work</string>
+    <string name="Ex1">Rs.5000.00</string>
+    <string name="Date1">15 Dec - 6:20 AM</string>
+    <string name="Recoad2">WiFi Bill</string>
+    <string name="date2">15 Dec - 6:20 AM</string>
+    <string name="In1">-Rs.2,600.00</string>
+    <string name="record_name">Enter the Record Name</string>
+    <string name="category">Select the Category</string>
+    <string name="task_type">Select the Task Type</string>
+    <string name="select_the_task">Select the Task</string>
+    <string name="account">Select the Account</string>
+    <string name="amount">Enter the Amount</string>
+    <string name="Recoadup">Ui Design Work</string>
+    <string name="Category">freelance job</string>
+    <string name="Type">Professional</string>
+    <string name="Task">Ui Design work for Android</string>
+    <string name="Account">BOC</string>
+    <string name="Amount">5,000</string>
 </resources>
