@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitApplication</string>
+    <string name="app_name">AppLife</string>
     <string name="name1">SLIIT 2020</string>
     <string name="title_activity_splashscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
