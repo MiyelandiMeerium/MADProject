@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp"
+    >
 
     <ImageView
         android:layout_width="250dp"
@@ -18,20 +20,21 @@
         android:layout_marginTop="30dp"
         android:text="Welcome"
         android:textColor="#0d6e6a"
-        android:textSize="45dp"
+        android:textSize="50dp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create a new account"
+        android:text="Manage your life with App"
         android:textColor="#0d6e6a"
-        android:textSize="16dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/button"
         android:text="Login"
@@ -40,8 +43,9 @@
         android:textStyle="bold" />
 
     <Button
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:text="Register"
