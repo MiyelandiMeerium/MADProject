@@ -34,5 +34,20 @@
     <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="forget_password">Forget Password?</string>
+    <string name="theme">Add Accounts</string>
+    <string name="Accnum"> Enter Account number</string>
+    <string name="bname">Enter the bank name</string>
+    <string name="des">Enter the description</string>
+    <string name="balance">Enter the opening balance</string>
+    <string name="subbtn">Submit</string>
+    <string name="deletebtn">Delete</string>
+    <string name="editbtn">Update</string>
+    <string name="theme1">Edit Accounts</string>
+    <string name="Accname">Enter Account name</string>
+    <string name="textview1">Accounts</string>
+    <array name="Accounttypes">
+        <item>Current</item>
+        <item>Savings</item>
+    </array>
 
 </resources>
