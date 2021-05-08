@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class editrecoad extends AppCompatActivity {
+public class EditRecoad extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
