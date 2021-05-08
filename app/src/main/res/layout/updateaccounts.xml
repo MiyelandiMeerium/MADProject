@@ -3,35 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="15dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="194dp"
-        android:padding="10dp"
-        android:src="@drawable/app" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:letterSpacing="0.03"
-        android:text="Register"
+        android:text="Edit Accounts"
         android:textColor="#0d6e6a"
         android:textSize="35dp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/Accnum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/forget"
         android:baselineAligned="false"
         android:paddingLeft="20dp"
-        android:hint="Full Name"
+        android:hint="Enter the account number"
         android:textColor="#0d6e6a"
         android:textSize="18dp"
         android:textStyle="bold"
@@ -39,51 +33,81 @@
         tools:visibility="visible" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/Accname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/forget"
-        android:baselineAligned="false"
         android:paddingLeft="20dp"
-        android:hint="Email"
+        android:hint="Enter the account name"
+        android:textColor="#0d6e6a"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/Acctype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/forget"
+        android:paddingLeft="20dp"
         android:textColor="#0d6e6a"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:visibility="visible"
-        tools:visibility="visible" />
+        android:entries="@array/Accounttypes">
+
+    </Spinner>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/bname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/forget"
         android:paddingLeft="20dp"
-        android:hint="Confirm Password"
+        android:hint="Enter the bank name"
         android:textColor="#0d6e6a"
         android:textSize="18dp"
         android:textStyle="bold" />
-
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/forget"
         android:paddingLeft="20dp"
-        android:hint="Phone Number"
+        android:hint="Enter the description"
         android:textColor="#0d6e6a"
         android:textSize="18dp"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/balance"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/forget"
+        android:hint="Enter the opening balance"
+        android:paddingLeft="25dp"
+        android:textColor="#0d6e6a"
+        android:textSize="18dp"
+        android:textStyle="bold" />
     <Button
-        android:id="@+id/registerBtn"
+        android:id="@+id/subbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:background="@drawable/button"
-        android:text="Sign UP"
+        android:text="Update"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/deletebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button"
+        android:text="Delete"
         android:textColor="#FFF"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -93,44 +117,5 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Already have an account? "
-            android:textColor="#0d6e6a"
-            android:textSize="18dp"
-            android:layout_marginBottom="15dp"/>
-
-        <TextView
-            android:id="@+id/createText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Login"
-            android:textColor="#000"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_margin="15dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createText"
-            app:layout_constraintVertical_bias="0.26" />
-
     </LinearLayout>
 </LinearLayout>

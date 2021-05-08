@@ -50,4 +50,34 @@
         <item>Savings</item>
     </array>
 
+
+
+    <string name="tasktxt1">Welcome Back,</string>
+    <string name="tasktxt2">Ms.MIYELANDI</string>
+    <string name="tasktxt3">Pending Tasks</string>
+    <string name="tasktxt4">2</string>
+    <string name="tasktxt5">Important Urgent</string>
+    <string name="tasktxt6">Not important Urgent</string>
+    <string name="tasktxt7">Important Not Urgent</string>
+    <string name="tasktxt8">Pending Tasks</string>
+    <string name="tasktxt9">Create Database</string>
+    <string name="tasktxt10">30%</string>
+    <string name="tasktxt11">Create login Page</string>
+    <string name="tasktxt12">10%</string>
+    <string name="tasktxt13">Submit</string>
+    <string name="title_activity_signup_login">AppLife</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="_15_dec_6_20_am">15 Dec - 6:20 AM</string>
+    <string name="see_all">See All</string>
+    <string name="listviewpgbtn">listview</string>
+    <string name="myprofilepgbtn">myprofilepgbtn</string>
+    <string name="string_searchpgbtn">string/searchpgbtn</string>
+
 </resources>

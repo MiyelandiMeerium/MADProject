@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listaccounts"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/accnum4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Account number"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/accname3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Account name"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/acctype3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Account types"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/bname1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Bank name"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/des1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="description"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/openbalance1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Opening balance"
+        android:textSize="18sp">
+
+    </TextView>
+
+</LinearLayout>
