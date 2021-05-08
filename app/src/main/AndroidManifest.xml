@@ -12,6 +12,14 @@
 
         <activity android:name=".TestActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AddAccountsActivity" ></activity>
+        <activity android:name=".ForgetActivity" ></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".SignUpActivity" ></activity>
+
+
+
+
     </application>
 
 </manifest>
