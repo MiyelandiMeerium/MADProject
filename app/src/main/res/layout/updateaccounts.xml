@@ -18,7 +18,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/Accnum"
+        android:id="@+id/updateAccnum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -33,7 +33,7 @@
         tools:visibility="visible" />
 
     <EditText
-        android:id="@+id/Accname"
+        android:id="@+id/updateAccname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -44,7 +44,7 @@
         android:textSize="18dp"
         android:textStyle="bold" />
     <Spinner
-        android:id="@+id/Acctype"
+        android:id="@+id/updateAcctype"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -58,7 +58,7 @@
     </Spinner>
 
     <EditText
-        android:id="@+id/bname"
+        android:id="@+id/updatebname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
         android:textSize="18dp"
         android:textStyle="bold" />
     <EditText
-        android:id="@+id/des"
+        android:id="@+id/updatedes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -81,7 +81,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/balance"
+        android:id="@+id/updatebalance"
         android:layout_width="355dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -92,7 +92,7 @@
         android:textSize="18dp"
         android:textStyle="bold" />
     <Button
-        android:id="@+id/subbtn"
+        android:id="@+id/updatebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
