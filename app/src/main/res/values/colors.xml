@@ -13,4 +13,12 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="myprimary">#0d6e6a</color>
+    <color name="Accnum">#0C0706</color>
+    <color name="Accname">#090606</color>
+    <color name="bname">#020101</color>
+    <color name="des">#070404</color>
+    <color name="balance">#050404</color>
+    <color name="Subbtn1">#090606</color>
+
+
 </resources>
