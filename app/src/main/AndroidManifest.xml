@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GitApplication">
-        <activity android:name=".ViewAccountsActivity"></activity>
         <activity android:name=".TestActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AddAccountsActivity" />
