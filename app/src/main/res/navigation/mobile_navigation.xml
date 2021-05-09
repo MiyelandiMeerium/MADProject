@@ -15,11 +15,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.gitapplication.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/activity_profile" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.gitapplication.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_wallet"
+        android:name="com.example.gitapplication.ui.wallet.WalletFragment"
+        android:label="Wallet"
+        tools:layout="@layout/fragment_wallet" />
 </navigation>
