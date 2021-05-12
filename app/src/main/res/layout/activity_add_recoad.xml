@@ -1,150 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    tools:context=".AddRecordActivity">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record Name"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Record Name"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/recordname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/forget"
+                android:hint="Enter Recoad Name" />
 
-                        <EditText
-                            android:id="@+id/recoadname"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:hint="@string/record_name" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record Type"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Description"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/recordtype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/forget"
+                android:entries="@array/recordtype">
 
-                        <EditText
-                            android:id="@+id/desc"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:hint="Enter the Description"
-                            />
+            </Spinner>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Category"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amonut"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/category"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:hint="@string/category" />
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/forget"
+                android:hint="Enter Amount" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Task Type"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btninsert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button"
+                android:text="Submit"
+                android:textColor="#fff"
+                tools:visibility="visible" />
 
-                        <EditText
-                            android:id="@+id/tasktype"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:hint="@string/task_type" />
+        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Select Task"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/selecttask"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:hint="@string/select_the_task" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Account"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/account"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:hint="@string/account" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Amount"
-                            android:textColor="#000"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/forget"
-                            android:text="@string/amount" />
-
-                        <Button
-                            android:id="@+id/addbtn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/button"
-                            android:text="Submit"
-                            android:textColor="#fff"
-                            tools:visibility="visible" />
-                </LinearLayout>
-        </ScrollView>
 </LinearLayout>
