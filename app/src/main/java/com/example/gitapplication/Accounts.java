@@ -1,35 +1,49 @@
 package com.example.gitapplication;
 
 public class Accounts {
-    String Accnumber;
-    String Accountname;
-    String Accounttype;
-    String Bankname;
-    String Description;
-    String OpeningBalance;
+    String id;
+    String accnumber;
+    String accountname;
+    String accounttype;
+    String bankname;
+    String description;
+    String openingBalance;
 
-    public Accounts(String Accnumber , String Accountname , String Accounttype  , String Bankname , String Description , String OpeningBalance) {
-        this.Accnumber = Accnumber;
-        this.Accountname = Accountname;
-        this.Accounttype = Accounttype;
-        this.Bankname = Bankname;
-        this.Description = Description;
-        this.OpeningBalance = OpeningBalance;
+    public Accounts( String id, String accnumber, String accountname, String accounttype , String bankname , String description , String openingBalance) {
+        this.id = id;
+        this.accnumber = accnumber;
+        this.accountname = accountname;
+        this.accounttype = accounttype;
+        this.bankname = bankname;
+        this.description = description;
+        this.openingBalance = openingBalance;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getAccnumber() {
-        return Accnumber;
+        return accnumber;
     }
 
     public String getAccountname() {
-        return Accountname;
+        return accountname;
     }
 
-    public String getAccounttype() { return Accounttype; }
+    public String getAccounttype() {
+        return accounttype;
+    }
 
-    public String getBankname() { return Bankname; }
+    public String getBankname() {
+        return bankname;
+    }
 
-    public String getDescription() { return Description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public String getOpeningBalance() { return OpeningBalance; }
+    public String getOpeningBalance() {
+        return openingBalance;
+    }
 }
