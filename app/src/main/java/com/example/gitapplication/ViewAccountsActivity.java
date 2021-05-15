@@ -69,12 +69,12 @@ public class ViewAccountsActivity extends AppCompatActivity {
                     @Override
                     public Accounts parseSnapshot(@NonNull DataSnapshot snapshot) {
                         return new Accounts(snapshot.child("id").getValue().toString(),
-                                snapshot.child("num").getValue().toString(),
-                                snapshot.child("name").getValue().toString(),
-                                snapshot.child("type").getValue().toString(),
-                                snapshot.child("bname").getValue().toString(),
+                                snapshot.child("accnumber").getValue().toString(),
+                                snapshot.child("accountname").getValue().toString(),
+                                snapshot.child("aacounttype").getValue().toString(),
+                                snapshot.child("bankname").getValue().toString(),
                                 snapshot.child("description").getValue().toString(),
-                                snapshot.child("balance").getValue().toString());
+                                snapshot.child("openingBalance").getValue().toString());
                     }
                 })
                 .build();
