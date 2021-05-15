@@ -9,13 +9,13 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:letterSpacing="0.03"
-        android:text="Edit Accounts"
-        android:textColor="#0d6e6a"
-        android:textSize="35dp"
-        android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Update Details"
+        android:textStyle="bold"
+        android:background="@color/purple_500"
+        android:textSize="25sp"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/updateAccnum"
