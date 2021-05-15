@@ -38,6 +38,7 @@ public class AddAccountsActivity extends AppCompatActivity {
         Accnum = findViewById(R.id.Accnum);
         Accname = findViewById(R.id.Accname);
         Acctype = findViewById(R.id.Acctype);
+        Bname = findViewById(R.id.bname);
         Des = findViewById(R.id.des);
         Balance = findViewById(R.id.balance);
         Subbtn = findViewById(R.id.subbtn);
@@ -53,16 +54,16 @@ public class AddAccountsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (awesomeValidation.validate()){
-                    Toast.makeText(getApplicationContext(), "From Validate Successfully..", Toast.LENGTH_SHORT).show();
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Accounts").push();
+                    Toast.makeText(getApplicationContext(), "Validate Successfully..", Toast.LENGTH_SHORT).show();
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Accounts");
                     Map<String,Object> map = new HashMap<>();
                     map.put("id",databaseReference.getKey());
-                    map.put("num",Accnum.getText().toString());
-                    map.put("name",Accname.getText().toString());
-                    map.put("type",Acctype.getSelectedItem().toString());
-                    map.put("bname",Bname.getText().toString());
+                    map.put("accnumber",Accnum.getText().toString());
+                    map.put("accountname",Accname.getText().toString());
+                    map.put("accounttype",Acctype.getSelectedItem().toString());
+                    map.put("bankname",Bname.getText().toString());
                     map.put("description",Des.getText().toString());
-                    map.put("balance",Balance.getText().toString());
+                    map.put("openingBalance",Balance.getText().toString());
 
                     databaseReference.setValue(map);
 
@@ -75,6 +76,9 @@ public class AddAccountsActivity extends AppCompatActivity {
 
             }
         });
+
+
+    }
 
 
     }
