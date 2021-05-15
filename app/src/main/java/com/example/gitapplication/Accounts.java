@@ -19,9 +19,7 @@ public class Accounts {
         this.openingBalance = openingBalance;
     }
 
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
 
     public String getAccnumber() {
         return accnumber;
