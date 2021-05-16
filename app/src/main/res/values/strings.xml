@@ -79,6 +79,8 @@
     <string name="myprofilepgbtn">myprofilepgbtn</string>
     <string name="string_searchpgbtn">string/searchpgbtn</string>
 
+
+
     <array name="recordtype">
         <item>Income</item>
         <item>Expenses</item>
