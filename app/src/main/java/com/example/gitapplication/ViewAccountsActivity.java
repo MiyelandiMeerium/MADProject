@@ -58,7 +58,8 @@ public class ViewAccountsActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        Load(); //method containing  FirebaseRecyclerAdapter
+        Load();
+
     }
 
     private void Load() {

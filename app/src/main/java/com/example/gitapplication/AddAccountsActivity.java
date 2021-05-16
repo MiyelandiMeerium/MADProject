@@ -81,5 +81,4 @@ public class AddAccountsActivity extends AppCompatActivity {
     }
 
 
-    }
 }
