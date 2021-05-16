@@ -51,7 +51,6 @@
     </array>
 
 
-
     <string name="tasktxt1">Welcome Back,</string>
     <string name="tasktxt2">Ms.MIYELANDI</string>
     <string name="tasktxt3">Pending Tasks</string>
@@ -80,11 +79,15 @@
     <string name="myprofilepgbtn">myprofilepgbtn</string>
     <string name="string_searchpgbtn">string/searchpgbtn</string>
 
+
+
     <array name="recordtype">
         <item>Income</item>
         <item>Expenses</item>
     </array>
     <string name="invalid_name">Please enter valid name</string>
     <string name="invalid_amount">Please enter valid amount</string>
+    <string name="invalid_Accnumber">Please enter valid Account number</string>
+    <string name="invalid_Accname">Please enter valid Account name</string>
 
 </resources>

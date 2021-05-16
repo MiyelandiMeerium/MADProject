@@ -1,7 +1,6 @@
 package com.example.gitapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,20 +8,27 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.common.internal.AccountType;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AddAccountsActivity extends AppCompatActivity {
-    EditText Accnum;
-    EditText Accname;
-    EditText bname;
-    EditText des;
-    EditText balance;
-    Spinner  Acctype;
-    Button subbtn;
+import java.util.HashMap;
+import java.util.Map;
 
-    DatabaseReference myRef;
+
+public class AddAccountsActivity extends AppCompatActivity {
+
+    EditText Accnum, Accname,Bname,Des,Balance;
+    Spinner Acctype;
+    Button Subbtn;
+
+    AwesomeValidation awesomeValidation;
+    DatabaseReference accountsDbRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,32 +37,48 @@ public class AddAccountsActivity extends AppCompatActivity {
 
         Accnum = findViewById(R.id.Accnum);
         Accname = findViewById(R.id.Accname);
-        subbtn = findViewById(R.id.subbtn);
         Acctype = findViewById(R.id.Acctype);
-        bname =findViewById(R.id.bname);
-        des = findViewById(R.id.des);
-        balance = findViewById(R.id.balance);
+        Bname = findViewById(R.id.bname);
+        Des = findViewById(R.id.des);
+        Balance = findViewById(R.id.balance);
+        Subbtn = findViewById(R.id.subbtn);
 
-        myRef = FirebaseDatabase.getInstance().getReference().child("Accounts");
-        subbtn.setOnClickListener(new View.OnClickListener() {
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        awesomeValidation.addValidation(this , R.id.Accnum,RegexTemplate.NOT_EMPTY, R.string.invalid_Accnumber);
+        awesomeValidation.addValidation(this,R.id.Accname, RegexTemplate.NOT_EMPTY,R.string.invalid_Accname);
+
+        accountsDbRef = FirebaseDatabase.getInstance().getReference().child("Accounts");
+
+        Subbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertAccountsData();
+
+                if (awesomeValidation.validate()){
+                    Toast.makeText(getApplicationContext(), "Validate Successfully..", Toast.LENGTH_SHORT).show();
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Accounts");
+                    Map<String,Object> map = new HashMap<>();
+                    map.put("id",databaseReference.getKey());
+                    map.put("accnumber",Accnum.getText().toString());
+                    map.put("accountname",Accname.getText().toString());
+                    map.put("accounttype",Acctype.getSelectedItem().toString());
+                    map.put("bankname",Bname.getText().toString());
+                    map.put("description",Des.getText().toString());
+                    map.put("openingBalance",Balance.getText().toString());
+
+                    databaseReference.setValue(map);
+
+
+                    Intent intent = new Intent(AddAccountsActivity.this,ViewAccountsActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validation Faild", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+
+
     }
 
-    private void insertAccountsData() {
-        String Accnumber = Accnum.getText().toString();
-        String Accountname = Accname.getText().toString();
-        String Accounttype = Acctype.getSelectedItem().toString();
-        String Bankname = bname.getText().toString();
-        String Description = des.getText().toString();
-        String OpeningBalance = balance.getText().toString();
 
-        Accounts accounts = new Accounts(Accnumber , Accountname , Accounttype ,Bankname,Description, OpeningBalance);
-
-        myRef.push().setValue(accounts);
-        Toast.makeText(AddAccountsActivity.this , "data inserted" , Toast.LENGTH_SHORT).show();
     }
-}

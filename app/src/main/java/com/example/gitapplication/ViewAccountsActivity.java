@@ -1,153 +1,206 @@
 package com.example.gitapplication;
 
-import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.Query;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
-import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ViewAccountsActivity extends AppCompatActivity {
-    ListView myListview;
-    List<Accounts> accountsList;
 
-    DatabaseReference myRef;
+    Button Add;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private FirebaseRecyclerAdapter adapter;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_accounts);
+        Add = findViewById(R.id.add);
+        recyclerView = findViewById(R.id.list);
 
-        myListview = findViewById(R.id.listview);
-        accountsList = new ArrayList<>();
-
-        myRef = FirebaseDatabase.getInstance().getReference("Accounts");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                accountsList.clear();
-
-                for (DataSnapshot accountDatasnap : snapshot.getChildren()) {
-
-                    Accounts accounts = accountDatasnap.getValue(Accounts.class);
-                    accountsList.add(accounts);
-                }
-
-                ListAdapter adapter = new ListAdapter(ViewAccountsActivity.this, accountsList);
-                myListview.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-
-            }
-
-        });
-
-        myListview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Accounts accounts = accountsList.get(position);
-                showUpdateDialog(accounts.getAccnumber(), accounts.getAccountname());
-                return false;
-            }
-
-        });
-
-    }
-
-    private void showUpdateDialog(final String Accnum, String Accname) {
-        AlertDialog.Builder dlg = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dlgView = inflater.inflate(R.layout.updateaccounts, null);
-
-        dlg.setView(dlgView);
-
-        EditText updateAccnum = dlgView.findViewById(R.id.updateAccnum);
-        EditText updateAccname = dlgView.findViewById(R.id.updateAccname);
-        Spinner updateAcctype = dlgView.findViewById(R.id.updateAcctype);
-        EditText updatebname = dlgView.findViewById(R.id.updatebname);
-        EditText updatedes = dlgView.findViewById(R.id.updatedes);
-        EditText updatebalance = dlgView.findViewById(R.id.updatebalance);
-        EditText updatebtn = dlgView.findViewById(R.id.updatebtn);
-        EditText deletebtn = dlgView.findViewById(R.id.deletebtn);
-
-        dlg.setTitle("Updating" + Accnum + "record");
-        final AlertDialog alertDialog = dlg.create();
-        dlg.show();
-
-        updatebtn.setOnClickListener(new View.OnClickListener() {
+        Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newaccnum = updateAccnum.getText().toString();
-                String newaccname = updateAccname.getText().toString();
-                String newacctype = updateAcctype.getSelectedItem().toString();
-                String newbname = updatebname.getText().toString();
-                String newdes = updatedes.getText().toString();
-                String newbalace = updatebalance.getText().toString();
-                updatedata(newaccnum, newaccname, newacctype, newbname, newdes, newbalace);
-                Toast.makeText(ViewAccountsActivity.this, "Record updated", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ViewAccountsActivity.this, AddAccountsActivity.class);
+                startActivity(intent);
             }
         });
 
-       deletebtn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-                deleteRecord(Accnum);
-           }
-       });
-
-       
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        Load(); //method containing  FirebaseRecyclerAdapter
     }
-     private void showToast (String message) {
-     Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-     }
-     private void deleteRecord(String Accnum) {
-         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Accounts").child(Accnum);
 
-         Task<Void> task = myRef.removeValue();
-         task.addOnSuccessListener(new OnSuccessListener<Void>() {
-             @Override
-             public void onSuccess(Void unused) {
+    private void Load() {
+        Query query = FirebaseDatabase.getInstance().getReference().child("Accounts");
+        FirebaseRecyclerOptions<Accounts> options = new FirebaseRecyclerOptions.Builder<Accounts>()
+                .setQuery(query, new SnapshotParser<Accounts>() {
+                    @NonNull
+                    @Override
+                    public Accounts parseSnapshot(@NonNull DataSnapshot snapshot) {
+                        return new Accounts(snapshot.child("id").getValue().toString(),
+                                snapshot.child("accnumber").getValue().toString(),
+                                snapshot.child("accountname").getValue().toString(),
+                                snapshot.child("aacounttype").getValue().toString(),
+                                snapshot.child("bankname").getValue().toString(),
+                                snapshot.child("description").getValue().toString(),
+                                snapshot.child("openingBalance").getValue().toString());
+                    }
+                })
+                .build();
 
-                  showToast("Deleted");
+        adapter = new FirebaseRecyclerAdapter<Accounts, AccountsViewHolder>(options) {
+            @Override
+            public AccountsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.listaccounts, parent, false);
 
-             }
-         }).addOnFailureListener(new OnFailureListener() {
-             @Override
-             public void onFailure(@NonNull @NotNull Exception e) {
-                       showToast("error deleting record");
-             }
-         });
-     }
-   private void updatedata( String Accnum, String Accname , String Acctype , String bname , String des, String balance){
-
-                DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Accounts").child(Accnum);
-                Accounts accounts = new Accounts(Accnum , Accname , Acctype ,bname ,des ,balance);
-                myRef.setValue(accounts);
+                return new AccountsViewHolder(view);
             }
+
+
+            @Override
+            protected void onBindViewHolder(AccountsViewHolder holder, int position, Accounts model) {
+                holder.setTexnum(model.getAccnumber());
+                holder.setTexname(model.getAccountname());
+                holder.setTextype(model.getAccounttype());
+                holder.setTexbname(model.getBankname());
+                holder.setTexdes(model.getDescription());
+                holder.setTexbalance(model.getOpeningBalance());
+
+
+
+
+
+                holder.Editbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        final DialogPlus dailogPlus = DialogPlus.newDialog(holder.texnum.getContext())
+                                .setContentHolder(new ViewHolder(R.layout.updateaccounts))
+                                .setExpanded(true,900).setMargin(20, 20, 20, 20)
+
+                                .create();
+
+                        View view = dailogPlus.getHolderView();
+
+                        EditText upaccnum = view.findViewById(R.id.updateAccnum);
+                        EditText upaccname = view.findViewById(R.id.updateAccname);
+                        EditText uptype = view.findViewById(R.id.updateAcctype);
+                        EditText upbname = view.findViewById(R.id.updatebname);
+                        EditText updes = view.findViewById(R.id.updatedes);
+                        EditText upbalance = view.findViewById(R.id.updatebalance);
+
+
+
+                        Button upbtn = view.findViewById(R.id.updatebtn);
+
+                        upaccnum.setText(model.getAccnumber());
+                        upaccname.setText(model.getAccountname());
+                        uptype.setText(model.getAccounttype());
+                        upbname.setText(model.getBankname());
+                        updes.setText(model.getDescription());
+                        upbalance.setText(model.getOpeningBalance());
+
+
+                        dailogPlus.show();
+
+                        upbtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Map<String,Object> map = new HashMap<>();
+                                map.put("num",upaccnum.getText().toString());
+                                map.put("name",upaccname.getText().toString());
+                                map.put("type",uptype.getText().toString());
+                                map.put("bname",upbname.getText().toString());
+                                map.put("description",updes.getText().toString());
+                                map.put("balance",upbalance.getText().toString());
+
+                                FirebaseDatabase.getInstance().getReference().child("Accounts")
+                                        .child(getRef(position).getKey()).updateChildren(map)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(holder.texname.getContext(), "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                                                dailogPlus.dismiss();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(Exception e) {
+                                                Toast.makeText(holder.texname.getContext(), "Error While Updating ", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+
+                            }
+                        });
+
+                    }
+                });
+
+                holder.Deletebtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(holder.texname.getContext());
+                        builder.setTitle("Are you sure..?");
+                        builder.setMessage("Deleted data can't be Undo");
+
+                        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                FirebaseDatabase.getInstance().getReference().child("Accounts")
+                                        .child(getRef(position).getKey()).removeValue();
+                            }
+                        });
+
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(holder.texname.getContext(), "Cancelled.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        builder.show();
+                    }
+                });
+
+            }
+
+        };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+    }
+
+
 }
