@@ -9,25 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GitApplication">
-
+        <activity android:name=".AddBujectActivity"></activity>
+        <activity android:name=".BujectActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".AddAccountsActivity" ></activity>
-        <activity android:name=".ForgetActivity" ></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".SignUpActivity" ></activity>
-        <activity android:name=".ViewAccountsActivity" ></activity>
-
-
+        <activity android:name=".AddAccountsActivity" />
+        <activity android:name=".ForgetActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ViewAccountsActivity" />
+        <activity android:name=".EditProfile" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AddRecordActivity" />
         <activity android:name=".RecordActivity" />
-        <activity android:name=".MainActivity"></activity>
         <activity android:name=".MainHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

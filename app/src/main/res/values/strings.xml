@@ -78,8 +78,11 @@
     <string name="listviewpgbtn">listview</string>
     <string name="myprofilepgbtn">myprofilepgbtn</string>
     <string name="string_searchpgbtn">string/searchpgbtn</string>
-
-
+    <array name="period">
+        <item>Per Day</item>
+        <item>Per Month</item>
+        <item>Per Year</item>
+    </array>
 
     <array name="recordtype">
         <item>Income</item>
